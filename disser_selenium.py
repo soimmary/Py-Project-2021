@@ -12,7 +12,7 @@ alphabet_num = string.ascii_letters + string.digits
 
 # Записываем в таблицу metagata.csv
 def write_to_metadata(path_file, title, author, date, resource):
-    with open("/Users/mariabocharova/PycharmProjects/Thesis/metadata.csv", 'a', encoding='utf-8') as file:
+    with open("/Users/mariabocharova/PycharmProjects/Programming_Project/metadata.csv", 'a', encoding='utf-8') as file:
         file_writer = csv.writer(file, delimiter=";", lineterminator="\r")
         a = [path_file, title, author, date, resource]
         file_writer.writerow(a)
@@ -20,7 +20,7 @@ def write_to_metadata(path_file, title, author, date, resource):
 
 # Записываем txt в папку
 def write_to_txt(path, text):
-    with open(f'/Users/mariabocharova/PycharmProjects/Thesis/texts/disser/{path}',
+    with open(f'/Users/mariabocharova/PycharmProjects/Programming_Project/texts/disser/{path}',
               'w', encoding='utf-8') as file:
         text = text.replace('\n', ' ')
         file.write(text)
@@ -29,7 +29,7 @@ def write_to_txt(path, text):
 # Все существующие имена документов
 def get_names():
     with open('/Users/mariabocharova/PycharmProjects/'
-              'Thesis/metadata.csv', encoding='utf-8') as f:
+              'Programming_Project/metadata.csv', encoding='utf-8') as f:
         table = f.readlines()
         names = set()
         for path in table:
@@ -55,7 +55,7 @@ def get_text(url):
     options.add_argument(f'user-agent={userAgent}')
     driver = webdriver.Chrome(options=options,
                               executable_path=r'/Users/mariabocharova/PycharmProjects/'
-                                              r'Thesis/downloading_data/chromedriver')
+                                              r'Programming_Project/downloading_data/chromedriver')
     driver.get(url)
     try:
         text_elem = driver.find_elements_by_class_name('doc-part')
