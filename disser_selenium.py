@@ -55,7 +55,7 @@ def get_text(url):
     options.add_argument(f'user-agent={userAgent}')
     driver = webdriver.Chrome(options=options,
                               executable_path=r'/Users/mariabocharova/PycharmProjects/'
-                                              r'Programming_Project/downloading_data/chromedriver')
+                                              r'Programming_Project/chromedriver')
     driver.get(url)
     try:
         text_elem = driver.find_elements_by_class_name('doc-part')
@@ -80,6 +80,6 @@ def get_text(url):
 
 
 with open('disser_link.txt', 'r', encoding='utf-8') as file:
-    for link in file.readlines()[15639:]:
+    for link in file.readlines():
         get_text(link.strip())
-        #time.sleep(1)
+        time.sleep(1)
